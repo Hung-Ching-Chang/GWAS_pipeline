@@ -1,0 +1,41 @@
+name: Shapeit
+image: master.corp.ailabs.tw/taigenomics/shapeit:2.17
+category: Association Analysis
+version: Shapeit 2.17
+
+assessControl:
+
+
+options:
+  - name: REQUEST_MEMORY
+    optionType: string
+    required: true
+    defaultValue: 30G
+    description: 'The Memory requirements'
+  - name: REQUEST_CPU
+    optionType: string
+    required: true
+    defaultValue: 20
+    description: 'Number of the running threads'  
+
+
+res:
+  - filenameEnv: REF_PANEL
+    acceptableExtensions: ['.tgz']
+    required: true
+
+in:
+  - filenameEnv: IN_BFILE_ONE
+    acceptableExtensions: ['.CASE.bed', '.CONTROL.bed', '.bed']
+    required: true
+  - filenameEnv: IN_BFILE_TWO
+    acceptableExtensions: ['.CONTROL.bed']
+    required: false
+
+out:
+  - dirnameEnv: OUT_DIR
+    filenameEnv: OUT_BFILE_CASE
+    extension: '.phased_CASE.zip'
+  - dirnameEnv: OUT_DIR
+    filenameEnv: OUT_BFILE_CONTROL
+    extension: '.phased_CONTROL.zip'
