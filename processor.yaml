@@ -1,0 +1,87 @@
+name: Minimac4
+image: master.corp.ailabs.tw/taigenomics/minimac:4.0.0
+category: Association Analysis
+version: Minimac 4.0.0
+
+assessControl:
+  
+  
+options:
+  - name: REQUEST_CPU
+    optionType: string
+    required: true
+    defaultValue: 20
+    description: 'Number of the running threads'
+  - name: REQUEST_MEMORY
+    optionType: string
+    required: true
+    defaultValue: 102400M
+    description: 'The Memory requirements'
+  - name: IMPUTE_INFO_THRESHOLD
+    optionType: float
+    required: true
+    defaultValue: 0.3
+    description: 'Threshold for filtering out poorly imputed variants'
+  - name: CASE_GENO_QC
+    optionType: float
+    required: true
+    defaultValue: 0.02
+    description: 'post-QC threshold for Genotype Missingness after imputation'
+  - name: CASE_MAF_QC
+    optionType: float
+    required: true
+    defaultValue: 0.05
+    description: 'post-QC threshold for Minor Allele Frequency after imputation'
+  - name: CASE_HWE_QC
+    optionType: float
+    required: true
+    defaultValue: 0
+    description: 'post-QC threshold for Hardy Weinberg Equilibrium after imputation'
+  - name: CONTROL_GENO_QC
+    optionType: float
+    required: true
+    defaultValue: 0.02
+    description: 'post-QC threshold for Genotype Missingness after imputation'
+  - name: CONTROL_MAF_QC
+    optionType: float
+    required: true
+    defaultValue: 0.05
+    description: 'post-QC threshold for Minor Allele Frequency after imputation'
+  - name: CONTROL_HWE_QC
+    optionType: float
+    required: true
+    defaultValue: 0.0000001
+    description: 'post-QC threshold for Hardy Weinberg Equilibrium after imputation'
+
+res:
+  - filenameEnv: REF_PANEL
+    acceptableExtensions: ['.tar.gz']
+    required: true
+
+in:
+  - filenameEnv: IN_CASE
+    acceptableExtensions: ['.phased_CASE.zip']
+    required: false
+  - filenameEnv: IN_CONTROL
+    acceptableExtensions: ['.phased_CONTROL.zip']
+    required: false
+
+out:
+  - dirnameEnv: OUT_DIR
+    filenameEnv: OUT_BFILE_CASE_BED
+    extension: '.Imputed_CASE.bed'
+  - dirnameEnv: OUT_DIR
+    filenameEnv: OUT_BFILE_CASE_BIM
+    extension: '.Imputed_CASE.bim'
+  - dirnameEnv: OUT_DIR
+    filenameEnv: OUT_BFILE_CASE_FAM
+    extension: '.Imputed_CASE.fam'
+  - dirnameEnv: OUT_DIR
+    filenameEnv: OUT_BFILE_CONTROL
+    extension: '.Imputed_CONTROL.bed'
+  - dirnameEnv: OUT_DIR
+    filenameEnv: OUT_BFILE_CONTROL_BIM
+    extension: '.Imputed_CONTROL.bim'
+  - dirnameEnv: OUT_DIR
+    filenameEnv: OUT_BFILE_CONTROL_FAM
+    extension: '.Imputed_CONTROL.fam'
