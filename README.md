@@ -1,5 +1,5 @@
 # GWAS_pipeline
-Build GWAS pipeline step by step \
+Build GWAS pipeline step by step
 1) Install software and packages \
 -- plink \
 -- bcftools \
@@ -8,4 +8,4 @@ Build GWAS pipeline step by step \
 -- PRSice \
 -- SAIGE \
 -- R \
--- python \
+-- python
