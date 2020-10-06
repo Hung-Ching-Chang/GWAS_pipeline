@@ -1,2 +1,2 @@
 # GWAS_pipeline
-automatical GWAS pipeline
+Build GWAS pipeline step by step
